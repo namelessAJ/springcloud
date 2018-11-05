@@ -15,3 +15,9 @@
 /microservice/eureka-module/eureka-server1/target
 /microservice/eureka-module/eureka-server1/.classpath
 /microservice/eureka-module/eureka-server1/.project
+/microservice/ribbon-module/.project
+/microservice/ribbon-module/.settings
+/microservice/ribbon-module/ribbon-consumer/.classpath
+/microservice/ribbon-module/ribbon-consumer/.project
+/microservice/ribbon-module/ribbon-consumer/target
+/microservice/ribbon-module/ribbon-consumer/.settings
