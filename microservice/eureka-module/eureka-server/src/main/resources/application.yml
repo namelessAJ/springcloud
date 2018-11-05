@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: eureka-server
+    
+eureka:
+  instance:
+    hostname: service1
+  client:
+    service-url:
+      defaultZone: http://service2:8082/eureka/

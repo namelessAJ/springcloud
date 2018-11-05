@@ -1,0 +1,17 @@
+/microservice/.settings
+/microservice/eureka-module/.settings
+/microservice/.project
+/microservice/eureka-module/.project
+/microservice/eureka-module/eureka-client/target
+/microservice/eureka-module/eureka-client/.settings
+/microservice/eureka-module/eureka-client/.project
+/microservice/eureka-module/eureka-client/.classpath
+/microservice/eureka-module/eureka-server/.settings
+/microservice/eureka-module/eureka-server/target
+/microservice/eureka-module/eureka-server/.project
+/microservice/eureka-module/eureka-server/.classpath
+/.gitignore
+/microservice/eureka-module/eureka-server1/.settings
+/microservice/eureka-module/eureka-server1/target
+/microservice/eureka-module/eureka-server1/.classpath
+/microservice/eureka-module/eureka-server1/.project
