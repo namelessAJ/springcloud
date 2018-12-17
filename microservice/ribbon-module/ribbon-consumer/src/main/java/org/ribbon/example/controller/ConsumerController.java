@@ -12,8 +12,25 @@ public class ConsumerController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	@RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
-	public String helloConsumer() {
-		return restTemplate.getForEntity("http://hello-service/hello", String.class).getBody();
+	@RequestMapping(value = "/rconsumer4GetEntity", method = RequestMethod.GET)
+	public String consumer4GetEntity() {
+		return restTemplate.getForEntity("http://hello-service/hello?name={1}", String.class, "GetEntity").getBody();
+	}
+
+	@RequestMapping(value = "/rconsumer4GetObject", method = RequestMethod.GET)
+	public String consumer4GetObject() {
+		return restTemplate.getForObject("http://hello-service/hello?name={1}", String.class, "GetObject");
+	}
+	
+	@RequestMapping(value = "/rconsumer4PostEntity", method = RequestMethod.GET)
+	public String consumer4PostEntity() {
+		String name = "PostEntity";
+		return restTemplate.postForEntity("http://hello-service/hello", name, String.class).getBody();
+	}
+	
+	@RequestMapping(value = "/rconsumer4PostObject", method = RequestMethod.GET)
+	public String consumer4PostObject() {
+		String name = "PostObject";
+		return restTemplate.postForObject("http://hello-service/hello", name, String.class);
 	}
 }

@@ -23,12 +23,11 @@ public class HelloController {
 	private Registration registration;
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public String index() {
-
+	public String index(String name) {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-		return "hello world";
+		return "hello world:" + name;
 
 	}
 
