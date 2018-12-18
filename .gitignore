@@ -21,3 +21,9 @@
 /microservice/ribbon-module/ribbon-consumer/.project
 /microservice/ribbon-module/ribbon-consumer/target
 /microservice/ribbon-module/ribbon-consumer/.settings
+/microservice/queue-module/.settings
+/microservice/queue-module/*.project
+/microservice/queue-module/rabbit/.settings
+/microservice/queue-module/rabbit/target
+/microservice/queue-module/rabbit/.project
+/microservice/queue-module/rabbit/.classpath

@@ -8,12 +8,12 @@
 		<artifactId>microservice</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>eureka-module</artifactId>
+	<artifactId>queue-module</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>eureka-client</module>
-		<module>eureka-server</module>
-		<module>eureka-server1</module>
+		<module>rabbit</module>
 	</modules>
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
