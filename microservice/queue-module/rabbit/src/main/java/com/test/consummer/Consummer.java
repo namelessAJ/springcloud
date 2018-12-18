@@ -13,10 +13,10 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: MessageConsummer.java
+ * @Title: Consummer.java
  * @date: 2018年12月18日 下午4:25:01
  */
-public class MessageConsummer {
+public class Consummer {
 
 	public static void main(String[] args) {
 

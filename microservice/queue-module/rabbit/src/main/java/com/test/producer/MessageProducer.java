@@ -29,9 +29,11 @@ public class MessageProducer {
 
 			// 发布消息
 			channel.queueDeclare(Constant.QUEUE_NAME, false, false, false, null);
-			String message = "hello rabbit,我是中文";
-			channel.basicPublish("", Constant.QUEUE_NAME, null, message.getBytes("UTF-8"));
-			System.out.println("Send:" + message);
+			for (int i = 1; i <= 10; i++) {
+				String message = "hello rabbit,我是中文." + i;
+				channel.basicPublish("", Constant.QUEUE_NAME, null, message.getBytes("UTF-8"));
+				System.out.println("Send:" + message);
+			}
 
 			channel.close();
 			connection.close();
