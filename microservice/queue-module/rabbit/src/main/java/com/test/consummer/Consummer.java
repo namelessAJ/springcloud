@@ -28,7 +28,7 @@ public class Consummer {
 			Channel channel = connection.createChannel();
 
 			// 2.声明队列
-			channel.queueDeclare(Constant.QUEUE_NAME, false, false, false, null);
+			channel.queueDeclare(Constant.QUEUE_NAME, true, false, false, null);
 
 			// 3.生成消费者
 			Consumer consumer = new DefaultConsumer(channel) {
