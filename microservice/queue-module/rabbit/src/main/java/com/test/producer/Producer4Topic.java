@@ -10,10 +10,10 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.test.common.Constant;
 
 /**
- * @Title: Producer4Exchange.java
- * @date: 2018年12月19日 16:42:39
+ * @Title: Producer4Topic.java
+ * @date: 2018年12月20日 14:42:39
  */
-public class Producer4Exchange {
+public class Producer4Topic {
 
 	public static void main(String[] args) {
 
@@ -29,18 +29,14 @@ public class Producer4Exchange {
 			Channel channel = connection.createChannel();
 
 			// 定义exchange
-			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
+			channel.exchangeDeclare(Constant.TOPIC_EXCHANGE, BuiltinExchangeType.TOPIC);
 
-			// 定义队列持久化
-			boolean durable = true;
-			channel.queueDeclare(Constant.QUEUE_NAME, durable, false, false, null);
-			for (int i = 1; i <= 100; i++) {
-				String message = "hello rabbit,我是中文!@#$%^." + i;
-				// 发布消息(MessageProperties.PERSISTENT_TEXT_PLAIN:定义消息持久化)
-				channel.basicPublish(Constant.EXCHANGE_NAME, "", null, message.getBytes("UTF-8"));
-				System.out.println("Send:" + message);
+			String[] types = { "error", "info", "warning", "cron", "error.A" };
+			for (String type : types) {
+				String message = "I am " + type + "message:";
+				channel.basicPublish(Constant.TOPIC_EXCHANGE, type, null, message.getBytes());
+				System.out.println("Send " + type + ":" + message);
 			}
-
 			channel.close();
 			connection.close();
 

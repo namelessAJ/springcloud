@@ -9,4 +9,6 @@ public class Constant {
 	public static final String QUEUE_NAME = "com.test.producer1";
 	
 	public static final String EXCHANGE_NAME = "test";
+	
+	public static final String TOPIC_EXCHANGE = "topic_exchange";
 }
