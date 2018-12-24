@@ -27,3 +27,9 @@
 /microservice/queue-module/rabbit/target
 /microservice/queue-module/rabbit/.project
 /microservice/queue-module/rabbit/.classpath
+/microservice/hystrix-module/.settings
+/microservice/hystrix-module/.project
+/microservice/eureka-module/eureka-client1/.settings
+/microservice/eureka-module/eureka-client1/target
+/microservice/eureka-module/eureka-client1/*.project
+/microservice/eureka-module/eureka-client1/.classpath

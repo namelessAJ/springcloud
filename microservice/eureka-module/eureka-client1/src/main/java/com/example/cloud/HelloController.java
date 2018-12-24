@@ -1,4 +1,4 @@
-package com.example.cloud.controller;
+package com.example.cloud;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class HelloController {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-		return "get请求 : hello world " + name;
+		return "get请求1: hello world " + name;
 	}
 
 	@RequestMapping(value = "/helloPost")
@@ -38,7 +38,7 @@ public class HelloController {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-		
-		return "post请求 : hello world " + name;
+
+		return "post请求1: hello world " + name;
 	}
 }

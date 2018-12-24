@@ -1,0 +1,11 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: hello-service
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
