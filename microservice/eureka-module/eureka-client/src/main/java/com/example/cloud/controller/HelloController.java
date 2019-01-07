@@ -2,6 +2,8 @@ package com.example.cloud.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -25,11 +27,11 @@ public class HelloController {
 	private Registration registration;
 
 	@RequestMapping(value = "/helloGet")
-	public String helloGet(String name) {
+	public String helloGet(String name, HttpServletRequest req) {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-		return "get请求 : hello world " + name;
+		return "get请求 : hello world " + name + ":" + req.getServerPort();
 	}
 
 	@RequestMapping(value = "/helloPost")
@@ -38,7 +40,7 @@ public class HelloController {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-		
+
 		return "post请求 : hello world " + name;
 	}
 }

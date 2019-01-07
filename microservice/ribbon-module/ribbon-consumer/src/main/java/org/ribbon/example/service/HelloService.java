@@ -1,7 +1,9 @@
 package org.ribbon.example.service;
 
+import org.ribbon.example.config.RibbonConfiguration;
 import org.ribbon.example.vo.HelloVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +14,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
  * @date: 2018年12月24日 下午4:48:27
  */
 @Service
+@RibbonClient(name = "hello-service", configuration = RibbonConfiguration.class)
 public class HelloService {
 
 	@Autowired
