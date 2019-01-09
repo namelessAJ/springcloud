@@ -41,3 +41,9 @@
 /microservice/hystrix-module/turbine-dashboard/target
 /microservice/hystrix-module/turbine-dashboard/.classpath
 /microservice/hystrix-module/turbine-dashboard/.project
+/microservice/feign-module/.settings
+/microservice/feign-module/.project
+/microservice/feign-module/feign-consumer/.project
+/microservice/feign-module/feign-consumer/.settings
+/microservice/feign-module/feign-consumer/target
+/microservice/feign-module/feign-consumer/.classpath
