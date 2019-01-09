@@ -33,3 +33,7 @@
 /microservice/eureka-module/eureka-client1/target
 /microservice/eureka-module/eureka-client1/*.project
 /microservice/eureka-module/eureka-client1/.classpath
+/microservice/hystrix-module/hystrix-dashboard/target
+/microservice/hystrix-module/hystrix-dashboard/.settings
+/microservice/hystrix-module/hystrix-dashboard/.classpath
+/microservice/hystrix-module/hystrix-dashboard/.project
