@@ -1,0 +1,13 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: turbine-dashboard
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
+turbine:
+  app-config: ribbon-consumer
+  cluster-name-expression: "'default'"
+  combine-host-port: true

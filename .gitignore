@@ -37,3 +37,7 @@
 /microservice/hystrix-module/hystrix-dashboard/.settings
 /microservice/hystrix-module/hystrix-dashboard/.classpath
 /microservice/hystrix-module/hystrix-dashboard/.project
+/microservice/hystrix-module/turbine-dashboard/.settings
+/microservice/hystrix-module/turbine-dashboard/target
+/microservice/hystrix-module/turbine-dashboard/.classpath
+/microservice/hystrix-module/turbine-dashboard/.project
