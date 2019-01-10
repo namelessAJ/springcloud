@@ -40,7 +40,6 @@ public class HelloController {
 		String serviceId = registration.getServiceId();
 		List<ServiceInstance> serviceInstances = client.getInstances(serviceId);
 		logger.info("/hello , host:" + serviceInstances.get(0).getHost() + " ," + " service_id:" + serviceId);
-
 		return "post请求1: hello world " + name;
 	}
 }
