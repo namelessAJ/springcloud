@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient("hello-service")
 public interface IHelloService {
 
-	@RequestMapping("/helloGet")
-	String helloGet();
+	@RequestMapping("/hello1")
+	String hello(String name);
 
 	@RequestMapping("/helloPost")
 	String helloPost(HelloVO helloVO);
