@@ -7,8 +7,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
-#hello-service.ribbon.ConnetTimeout: 500
-#hello-service.ribbon.ReadTimeout: 2000
-#hello-service.ribbon.OkToRetryOnAllOperations: true
-#hello-service.ribbon.MaxAutoRetriesNextServer: 2
-#hello-service.ribbon.MaxAutoRetries: l
+hello-service:
+  ribbon:
+    ConnectTimeout: 500
+    ReadTimeout: 2000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetriesNextServer: 2
+    MaxAutoRetries: 1
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 2001

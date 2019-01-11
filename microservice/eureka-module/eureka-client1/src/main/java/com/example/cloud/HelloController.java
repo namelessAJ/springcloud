@@ -1,6 +1,7 @@
 package com.example.cloud;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,8 +48,12 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/hello1", method = RequestMethod.GET)
-	public String hello(String name) {
-		return "Hello " + name;
+	public String hello(String name) throws InterruptedException {
+		// 测试超时
+		int sleepTime = new Random().nextInt(3000);
+		logger.info("sleepTime :" + sleepTime);
+		Thread.sleep(sleepTime);
+		return "Hello2 " + name;
 	}
 
 	@RequestMapping(value = "/hello2", method = RequestMethod.GET)
