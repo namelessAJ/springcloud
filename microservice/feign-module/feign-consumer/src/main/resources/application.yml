@@ -6,14 +6,13 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
+      defaultZone: http://service1:8081/eureka/
 hystrix:
   command:
     default:
       execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 10000
+        timeout:
+          enabled: true
 feign:
   hystrix:
     enabled: true

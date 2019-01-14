@@ -8,10 +8,9 @@
 		<artifactId>microservice</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>hystrix-module</artifactId>
+	<artifactId>gateway-modoule</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>hystrix-dashboard</module>
-		<module>turbine-dashboard</module>
+		<module>api-gateway</module>
 	</modules>
 </project>

@@ -1,0 +1,10 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: api-gateway
+zuul:
+  routes:
+    test-url: 
+    path: test-url/**
+    url: http://localhost:8080/

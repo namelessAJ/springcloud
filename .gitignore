@@ -47,3 +47,9 @@
 /microservice/feign-module/feign-consumer/.settings
 /microservice/feign-module/feign-consumer/target
 /microservice/feign-module/feign-consumer/.classpath
+/microservice/gateway-modoule/.settings
+/microservice/gateway-modoule/.project
+/microservice/gateway-modoule/api-gateway/.classpath
+/microservice/gateway-modoule/api-gateway/.project
+/microservice/gateway-modoule/api-gateway/.settings
+/microservice/gateway-modoule/api-gateway/target
