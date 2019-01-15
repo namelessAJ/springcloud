@@ -14,5 +14,5 @@ hystrix:
         timeout:
           enabled: true
 feign:
-  hystrix:
+  hystrix: 
     enabled: true
