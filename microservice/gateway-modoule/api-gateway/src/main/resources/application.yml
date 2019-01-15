@@ -3,8 +3,13 @@ server:
 spring:
   application:
     name: api-gateway
+#zuul:
+#  routes:
+#    baidu: 
+#      path: /test/**
+#      url: http://www.163.com/
 zuul:
   routes:
-    baidu: 
-      path: /test/**
-      url: http://www.163.com/
+    ribbonurl:
+      path: /ribbon/**
+      serviceId: HELLO-SERVICE
