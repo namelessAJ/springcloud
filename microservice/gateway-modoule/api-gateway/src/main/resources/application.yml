@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
 #zuul:
 #  routes:
 #    baidu: 
@@ -13,3 +17,6 @@ zuul:
     ribbonurl:
       path: /ribbon/**
       serviceId: HELLO-SERVICE
+    feignurl: 
+      path: /feign/**
+      serviceId: FEIGN-CONSUMER
