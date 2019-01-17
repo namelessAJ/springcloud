@@ -53,3 +53,9 @@
 /microservice/gateway-modoule/api-gateway/.project
 /microservice/gateway-modoule/api-gateway/.settings
 /microservice/gateway-modoule/api-gateway/target
+/microservice/config-module/.settings
+/microservice/config-module/.project
+/microservice/config-module/config-server/.classpath
+/microservice/config-module/config-server/.project
+/microservice/config-module/config-server/.settings
+/microservice/config-module/config-server/target
