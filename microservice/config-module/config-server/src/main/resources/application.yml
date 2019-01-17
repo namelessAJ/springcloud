@@ -8,10 +8,10 @@ spring:
       label: master
       server:
         git:
-          uri: https://github.com/namelessAJ/springcloud.git
-          search-paths: /microservice/configs
+          uri: https://github.com/namelessAJ/config-repo
           username: 
           password: 
+          basedir: F:\sss\base
 eureka:
   client:
     service-url:

@@ -1,17 +1,13 @@
 server:
-  port: 7001
+  port: 7002
 spring:
   application:
-    name: config-server
+    name: config-client
   cloud:
     config:
+      profile: dev
       label: master
-      server:
-        git:
-          uri: https://github.com/namelessAJ/springcloud.git
-          search-paths: /microservice/configs
-          username: 
-          password: 
+      uri: http://localhost:7001
 eureka:
   client:
     service-url:
