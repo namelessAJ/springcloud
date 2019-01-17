@@ -15,5 +15,7 @@
 	</properties>
 	<modules>
 		<module>config-server</module>
+		<module>config-client</module>
+		<module>config-properties</module>
 	</modules>
 </project>

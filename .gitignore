@@ -59,3 +59,9 @@
 /microservice/config-module/config-server/.project
 /microservice/config-module/config-server/.settings
 /microservice/config-module/config-server/target
+/microservice/config-module/config-client/.classpath
+/microservice/config-module/config-client/.project
+/microservice/config-module/config-client/.settings
+/microservice/config-module/config-client/target
+/microservice/config-module/config-properties/.project
+/microservice/config-module/config-properties/.settings
