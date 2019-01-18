@@ -65,3 +65,8 @@
 /microservice/config-module/config-client/target
 /microservice/config-module/config-properties/.project
 /microservice/config-module/config-properties/.settings
+/microservice/gateway-modoule/api-gateway-dynamic-route/.factorypath
+/microservice/gateway-modoule/api-gateway-dynamic-route/.project
+/microservice/gateway-modoule/api-gateway-dynamic-route/.settings
+/microservice/gateway-modoule/api-gateway-dynamic-route/target
+/microservice/gateway-modoule/api-gateway-dynamic-route/.classpath

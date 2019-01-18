@@ -12,5 +12,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>api-gateway</module>
+		<module>api-gateway-dynamic-route</module>
 	</modules>
 </project>
