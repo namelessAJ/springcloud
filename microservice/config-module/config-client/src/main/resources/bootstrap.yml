@@ -8,6 +8,9 @@ spring:
       profile: dev
       label: master
       uri: http://localhost:7001
+management:
+  security:
+    enabled: false
 eureka:
   client:
     service-url:
