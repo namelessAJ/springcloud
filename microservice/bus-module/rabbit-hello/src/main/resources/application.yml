@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rabbit-hello
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service1:8081/eureka/,http://service2:8082/eureka/
