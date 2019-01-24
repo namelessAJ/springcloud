@@ -17,6 +17,7 @@
 		<module>gateway-modoule</module>
 		<module>config-module</module>
 		<module>bus-module</module>
+		<module>sharding-module</module>
 	</modules>
 
 	<properties>

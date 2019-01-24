@@ -1,0 +1,28 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: test_sharding_mybatis
+sharding:
+  jdbc:
+    datasource:
+      names: ds-master,ds-slave0
+      ds-master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/db0
+        username: root
+        password: root
+      ds-slave0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/db1
+        username: root
+        password: root
+    config:
+      masterslave:
+        name: ms
+        master-data-source-name: master
+        slave-data-source-names: slave0
+        props:
+          sql.show: true

@@ -70,3 +70,15 @@
 /microservice/gateway-modoule/api-gateway-dynamic-route/.settings
 /microservice/gateway-modoule/api-gateway-dynamic-route/target
 /microservice/gateway-modoule/api-gateway-dynamic-route/.classpath
+/microservice/bus-module/.project
+/microservice/bus-module/.settings
+/microservice/bus-module/rabbit-hello/.classpath
+/microservice/bus-module/rabbit-hello/.project
+/microservice/bus-module/rabbit-hello/.settings
+/microservice/bus-module/rabbit-hello/target
+/microservice/sharding-module/.project
+/microservice/sharding-module/.settings
+/microservice/sharding-module/rwSeparation/.classpath
+/microservice/sharding-module/rwSeparation/.project
+/microservice/sharding-module/rwSeparation/.settings
+/microservice/sharding-module/rwSeparation/target

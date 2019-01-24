@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.rwSeparation.dao.mybatis.mapper.UserDOMapper">
+
+    <resultMap id="BaseResultMap" type="org.rwSeparation.dao.mybatis.models.UserDO">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="remark" property="remark" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+    	id, name, age, remark
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from t_user 
+	    where id = #{id}
+    </select>
+    
+	<select id="selectByEntity" resultMap="BaseResultMap" parameterType="org.rwSeparation.dao.mybatis.models.UserDO">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from t_user 
+	    <where>
+			<if test="id != null">
+				AND id = #{id}
+			</if>
+			<if test="name != null">
+				AND name = #{name}
+			</if>
+			<if test="age != age">
+				AND age = #{age}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark}
+			</if>
+        </where>
+    </select>
+  
+    <select id="findList" resultMap="BaseResultMap" parameterType="org.rwSeparation.dao.mybatis.models.UserDO">
+        select 
+		<include refid="Base_Column_List" />
+		from t_user 
+        <where>
+			<if test="id != null">
+				AND id = #{id}
+			</if>
+			<if test="name != null">
+				AND name = #{name}
+			</if>
+			<if test="age != age">
+				AND age = #{age}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark}
+			</if>
+        </where>
+    </select>
+    
+
+    <insert id="insert" parameterType="org.rwSeparation.dao.mybatis.models.UserDO" >
+        insert into t_user (id, name, age, remark)
+        values (#{id}, #{name}, #{age}, #{remark})
+    </insert>
+    
+     <update id="update" parameterType="org.rwSeparation.dao.mybatis.models.UserDO" >
+        update t_user 
+        <set>
+			<if test="name != null">
+				AND name = #{name}
+			</if>
+			<if test="age != age">
+				AND age = #{age}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark}
+			</if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="org.rwSeparation.dao.mybatis.models.UserDO" >
+        delete from t_user
+         <where>
+       		<if test="id != null and id >0 ">
+				id = #{id}
+			</if>
+		</where>
+    </delete>
+</mapper>
