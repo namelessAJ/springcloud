@@ -26,10 +26,10 @@ import lombok.extern.slf4j.Slf4j;
 		"sharding.jdbc.config.masterslave.master-data-source-name" })
 public class ShardingDataSourceConfig {
 
-	@Autowired(required = false)
+	@Autowired
 	private ShardingMasterSlaveConfig shardingMasterSlaveConfig;
 
-	@Bean("datasource")
+	@Bean("dataSource")
 	public DataSource masterSlaveDataSource() throws SQLException {
 		shardingMasterSlaveConfig.getDataSources().forEach((k, v) -> configDataSource(v));
 		Map<String, DataSource> dataSourceMap = Maps.newHashMap();

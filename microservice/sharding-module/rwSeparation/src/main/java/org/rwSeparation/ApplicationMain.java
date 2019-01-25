@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("org.rwSeparation")
+@MapperScan("org.rwSeparation.dao.mybatis")
 public class ApplicationMain {
 
 	public static void main(String[] args) {

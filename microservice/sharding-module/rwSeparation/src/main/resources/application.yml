@@ -22,7 +22,10 @@ sharding:
     config:
       masterslave:
         name: ms
-        master-data-source-name: master
-        slave-data-source-names: slave0
+        master-data-source-name: ds-master
+        slave-data-source-names: ds-slave0
         props:
           sql.show: true
+eureka:
+  client:
+    enabled: false

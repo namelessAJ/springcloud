@@ -60,7 +60,6 @@
         </where>
     </select>
     
-
     <insert id="insert" parameterType="org.rwSeparation.dao.mybatis.models.UserDO" >
         insert into t_user (id, name, age, remark)
         values (#{id}, #{name}, #{age}, #{remark})

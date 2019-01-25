@@ -21,4 +21,10 @@ public class UserController {
 		UserDO userDO = userService.info(userVO);
 		return userDO != null ? userDO.toString() : "";
 	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String add(@RequestBody UserVO userVO) {
+		userService.add(userVO);
+		return "success";
+	}
 }
