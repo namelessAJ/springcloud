@@ -1,5 +1,7 @@
 package org.rwSeparation.service.impl;
 
+import java.util.List;
+
 import org.rwSeparation.dao.mybatis.mapper.UserDOMapper;
 import org.rwSeparation.dao.mybatis.models.UserDO;
 import org.rwSeparation.service.UserService;
@@ -47,5 +49,12 @@ public class UserServiceImpl implements UserService {
 		UserDO userDO = new UserDO();
 		BeanUtils.copyProperties(userVO, userDO);
 		return userDOMapper.update(userDO);
+	}
+
+	@Override
+	public List<UserDO> findList(UserVO userVO) {
+		UserDO userDO = new UserDO();
+		BeanUtils.copyProperties(userVO, userDO);
+		return userDOMapper.findList(userDO);
 	}
 }

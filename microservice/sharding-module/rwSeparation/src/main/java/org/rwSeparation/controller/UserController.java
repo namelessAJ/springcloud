@@ -1,5 +1,7 @@
 package org.rwSeparation.controller;
 
+import java.util.List;
+
 import org.rwSeparation.dao.mybatis.models.UserDO;
 import org.rwSeparation.service.UserService;
 import org.rwSeparation.service.vo.UserVO;
@@ -21,7 +23,17 @@ public class UserController {
 		UserDO userDO = userService.info(userVO);
 		return userDO != null ? userDO.toString() : "";
 	}
-	
+
+	@RequestMapping(value = "/findList", method = RequestMethod.POST)
+	public String findList(@RequestBody UserVO userVO) {
+		StringBuilder str = new StringBuilder();
+		List<UserDO> list = userService.findList(userVO);
+		list.stream().forEach(u -> {
+			str.append(u.toString()).append(";");
+		});
+		return str.toString();
+	}
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@RequestBody UserVO userVO) {
 		userService.add(userVO);
