@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sharding.inline.dao.mybatis.mapper.OrderDOMapper">
+
+    <resultMap id="BaseResultMap" type="org.sharding.inline.dao.mybatis.models.OrderDO">
+    	<result column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+    	id, order_id, user_id
+	</sql>
+
+    <select id="findByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+        SELECT 
+		<include refid="Base_Column_List" />
+		FROM t_order WHERE user_id=#{id}
+    </select>
+
+    <select id="findByUserIdBetween" parameterType="map" resultMap="BaseResultMap" >
+        SELECT 
+		<include refid="Base_Column_List" />
+		FROM t_order WHERE user_id between #{min} and #{max}
+    </select>
+
+    <insert id="insert" parameterType="org.sharding.inline.dao.mybatis.models.OrderDO">
+        INSERT INTO t_order (order_id,user_id) VALUES (#{orderId},#{userId})
+    </insert>
+
+    <insert id="findByOrderId" parameterType="java.lang.Integer">
+        SELECT 
+		<include refid="Base_Column_List" />
+		FROM t_order WHERE order_id=#{id}
+    </insert>
+    
+</mapper>

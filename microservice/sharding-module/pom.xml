@@ -15,5 +15,6 @@
 	</properties>
 	<modules>
 		<module>rwSeparation</module>
+		<module>sharding-inline</module>
 	</modules>
 </project>
