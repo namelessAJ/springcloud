@@ -83,3 +83,8 @@
 /microservice/sharding-module/rwSeparation/.settings
 /microservice/sharding-module/rwSeparation/target
 /microservice/sharding-module/rwSeparation/.factorypath
+/microservice/sharding-module/sharding-inline/.classpath
+/microservice/sharding-module/sharding-inline/.project
+/microservice/sharding-module/sharding-inline/.settings
+/microservice/sharding-module/sharding-inline/target
+/microservice/sharding-module/sharding-inline/.factorypath

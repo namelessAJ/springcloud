@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8889
 spring:
   application:
     name: sharding_inline
@@ -22,9 +22,9 @@ sharding:
     config:
       #主从分离
       masterslave:
-        name: ms
-        master-data-source-name: ds_0
-        slave-data-source-names: ds_1
+#        name: ms
+#        master-data-source-name: ds_0
+#        slave-data-source-names: ds_1
         props:
           sql.show: true
       sharding:

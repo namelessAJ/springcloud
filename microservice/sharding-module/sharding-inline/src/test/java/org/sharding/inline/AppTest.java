@@ -30,8 +30,8 @@ public class AppTest {
 	@Test
 	public void add() {
 		OrderDO order = new OrderDO();
-		for (int i = 0; i <= 20; i++) {
-			for (int j = 0; j <= 30; j++) {
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 30; j++) {
 				order.setUserId(i);
 				order.setOrderId(j);
 				orderDOMapper.insert(order);
