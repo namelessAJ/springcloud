@@ -12,8 +12,17 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>rabbit</module>
-	</modules>
+        <module>springboot-rabbit</module>
+    </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<dependencies>
+		<!-- 添加springboot对amqp的支持 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+	</dependencies>
 </project>
