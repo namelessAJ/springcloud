@@ -1,4 +1,4 @@
-package com.test.consummer;
+package com.test.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -14,10 +14,10 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: Consummer4Topic1.java
- * @date: 2018年12月19日 下午2:25:01
+ * @Title: Consummer4Exchange2.java
+ * @date: 2018年12月18日 下午4:25:01
  */
-public class Consummer4Topic1 {
+public class Consummer4Exchange2 {
 
 	public static void main(String[] args) {
 
@@ -27,17 +27,12 @@ public class Consummer4Topic1 {
 			factory.setHost("127.0.0.1");
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
-			channel.exchangeDeclare(Constant.TOPIC_EXCHANGE, BuiltinExchangeType.TOPIC);
+			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
 
 			// 声明随机队列
 			String queue = channel.queueDeclare().getQueue();
+			channel.queueBind(queue, Constant.EXCHANGE_NAME, "");
 
-			String[] types = { "error.*", "*info", "error" };
-			for (String type : types) {
-				channel.queueBind(queue, Constant.TOPIC_EXCHANGE, type);
-			}
-
-			channel.basicQos(1);
 			// 生成消费者
 			Consumer consumer = new DefaultConsumer(channel) {
 				@Override
@@ -46,13 +41,12 @@ public class Consummer4Topic1 {
 
 					// 获取消息内容然后处理
 					String msg = new String(body, "UTF-8");
-					System.out.println(" [x] Direct1==Received '" + envelope.getRoutingKey() + "':'" + msg + "'");
-					channel.basicAck(envelope.getDeliveryTag(), false);
+					System.out.println("*********** Consummer4Exchange2" + " get message :[" + msg + "]");
 				}
 			};
 
 			// 消费消息
-			channel.basicConsume(queue, false, consumer);
+			channel.basicConsume(queue, true, consumer);
 
 		} catch (IOException | TimeoutException e) {
 			e.printStackTrace();

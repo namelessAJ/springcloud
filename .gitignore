@@ -88,3 +88,6 @@
 /microservice/sharding-module/sharding-inline/.settings
 /microservice/sharding-module/sharding-inline/target
 /microservice/sharding-module/sharding-inline/.factorypath
+/microservice/.idea
+*.iml
+/microservice/queue-module/rocket/target

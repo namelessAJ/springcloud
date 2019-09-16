@@ -1,9 +1,10 @@
-package com.test.consummer;
+package com.test.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
+import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -13,25 +14,26 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: ConsummerAck.java
- * @date: 2018年12月18日 下午5:25:01
+ * @Title: Consummer4Exchange.java
+ * @date: 2018年12月18日 下午4:25:01
  */
-public class ConsummerAck {
+public class Consummer4Exchange {
 
 	public static void main(String[] args) {
 
 		try {
-			// 1.创建链接
+
 			ConnectionFactory factory = new ConnectionFactory();
 			factory.setHost("127.0.0.1");
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
+			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
 
-			// 2.声明队列
-			channel.queueDeclare(Constant.QUEUE_NAME, true, false, false, null);
-			channel.basicQos(1); // 每次分发1条
+			// 声明随机队列
+			String queue = channel.queueDeclare().getQueue();
+			channel.queueBind(queue, Constant.EXCHANGE_NAME, "");
 
-			// 3.生成消费者
+			// 生成消费者
 			Consumer consumer = new DefaultConsumer(channel) {
 				@Override
 				public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties,
@@ -39,27 +41,12 @@ public class ConsummerAck {
 
 					// 获取消息内容然后处理
 					String msg = new String(body, "UTF-8");
-					System.out.println("*********** MessageConsummer" + " get message :[" + msg + "]");
-					for (char ch : msg.toCharArray()) {
-						if (ch == '.') {
-							try {
-								Thread.sleep(1000);
-								if(ch == '8') {
-									System.exit(0);
-								}
-							} catch (Exception e) {
-								e.printStackTrace();
-							} finally {
-								channel.basicAck(envelope.getDeliveryTag(), false);
-							}
-						}
-					}
+					System.out.println("*********** Consummer4Exchange" + " get message :[" + msg + "]");
 				}
 			};
 
-			// 4.消费消息
-			boolean autoAck = false;
-			channel.basicConsume(Constant.QUEUE_NAME, autoAck, consumer);
+			// 消费消息
+			channel.basicConsume(queue, true, consumer);
 
 		} catch (IOException | TimeoutException e) {
 			e.printStackTrace();
