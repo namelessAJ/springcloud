@@ -91,3 +91,4 @@
 /microservice/.idea
 *.iml
 /microservice/queue-module/rocket/target
+/microservice/queue-module/springboot-rabbit/target

@@ -6,7 +6,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
- * @Description: rocket producer
+ * @Description: rocketMq SyncProducer
  * @date: 2019-09-16 14:51
  */
 public class SyncProducer {
