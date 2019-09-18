@@ -1,4 +1,4 @@
-package com.test.consumer;
+package com.test.simple.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -14,10 +14,10 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: Consummer4Direct1.java
- * @date: 2018年12月19日 下午2:25:01
+ * @Title: Consummer4Direct2.java
+ * @date: 2018年12月20日 下午2:25:01
  */
-public class Consummer4Direct1 {
+public class Consummer4Direct2 {
 
 	public static void main(String[] args) {
 
@@ -32,12 +32,11 @@ public class Consummer4Direct1 {
 			// 声明随机队列
 			String queue = channel.queueDeclare().getQueue();
 
-			String[] types = { "error", "info", "warning" };
+			String[] types = { "info"};
 			for (String type : types) {
 				channel.queueBind(queue, Constant.EXCHANGE_NAME, type);
 			}
 
-			channel.basicQos(1);
 			// 生成消费者
 			Consumer consumer = new DefaultConsumer(channel) {
 				@Override
@@ -47,12 +46,11 @@ public class Consummer4Direct1 {
 					// 获取消息内容然后处理
 					String msg = new String(body, "UTF-8");
 					System.out.println(" [x] Direct1==Received '" + envelope.getRoutingKey() + "':'" + msg + "'");
-					channel.basicAck(envelope.getDeliveryTag(), false);
 				}
 			};
 
 			// 消费消息
-			channel.basicConsume(queue, false, consumer);
+			channel.basicConsume(queue, true, consumer);
 
 		} catch (IOException | TimeoutException e) {
 			e.printStackTrace();

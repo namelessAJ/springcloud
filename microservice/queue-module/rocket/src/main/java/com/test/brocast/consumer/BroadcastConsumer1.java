@@ -1,31 +1,36 @@
-package com.test.consumer;
+package com.test.brocast.consumer;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.List;
 
 /**
- * @Description: rocket consumer
- * @date: 2019-09-16 14:51
+ * @Description:
+ * @date: 2019-09-18 15:50
  */
-public class Consumer {
-    public static void main(String[] args) throws Exception {
+public class BroadcastConsumer1 {
 
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("syncGroup");
+    public static void main(String[] args) throws Exception {
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("broadCastGroup");
         consumer.setNamesrvAddr("localhost:9876");
-        consumer.subscribe("TopicTest", "*");
+        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
+        consumer.setMessageModel(MessageModel.BROADCASTING);
+        consumer.subscribe("topicBroadcast", "TagA || TagB || TagC");
+
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-                System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
+                System.out.printf(Thread.currentThread().getName() + " Receive New Messages: " + msgs + "%n");
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
         consumer.start();
-        System.out.printf("Consumer Started.%n");
+        System.out.printf("Broadcast Consumer Started.%n");
     }
 }
