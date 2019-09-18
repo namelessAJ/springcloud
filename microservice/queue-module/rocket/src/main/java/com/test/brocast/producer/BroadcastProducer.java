@@ -6,7 +6,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
- * @Description:
+ * @Description: 广播
  * @date: 2019-09-18 15:42
  */
 public class BroadcastProducer {
