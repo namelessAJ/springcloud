@@ -14,8 +14,8 @@ spring:
       server:
         git:
           uri: https://github.com/namelessAJ/config-repo
-          username: 
-          password: 
+          username: namelessAJ
+          password: ivan@123456
           basedir: F:\sss\base
 eureka:
   client:

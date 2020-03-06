@@ -18,6 +18,7 @@
 		<module>config-module</module>
 		<module>bus-module</module>
 		<module>sharding-module</module>
+		<module>aqs-module</module>
 	</modules>
 
 	<properties>
