@@ -88,3 +88,7 @@
 /microservice/sharding-module/sharding-inline/.settings
 /microservice/sharding-module/sharding-inline/target
 /microservice/sharding-module/sharding-inline/.factorypath
+/microservice/.idea
+/microservice/queue-module/springboot-rabbit/target
+*.iml
+/microservice/config-module/config-client/*.iml
