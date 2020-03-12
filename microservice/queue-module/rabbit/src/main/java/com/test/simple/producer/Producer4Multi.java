@@ -1,19 +1,19 @@
-package com.test.producer;
+package com.test.simple.producer;
+
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
+import com.test.common.Constant;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import com.rabbitmq.client.BuiltinExchangeType;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.test.common.Constant;
-
 /**
- * @Title: Producer4Exchange.java
- * @date: 2018年12月19日 16:42:39
+ * @Title: Producer.java
+ * @date: 2018年12月18日 上午11:42:39
  */
-public class Producer4Exchange {
+public class Producer4Multi {
 
 	public static void main(String[] args) {
 
@@ -28,16 +28,14 @@ public class Producer4Exchange {
 			// 定义channel
 			Channel channel = connection.createChannel();
 
-			// 定义exchange
-			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
-
 			// 定义队列持久化
 			boolean durable = true;
 			channel.queueDeclare(Constant.QUEUE_NAME, durable, false, false, null);
-			for (int i = 1; i <= 100; i++) {
-				String message = "hello rabbit,我是中文!@#$%^." + i;
+			for (int i = 1; i <= 10; i++) {
+				String message = "hello rabbit,我是中文." + i;
 				// 发布消息(MessageProperties.PERSISTENT_TEXT_PLAIN:定义消息持久化)
-				channel.basicPublish(Constant.EXCHANGE_NAME, "", null, message.getBytes("UTF-8"));
+				channel.basicPublish("", Constant.QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN,
+						message.getBytes("UTF-8"));
 				System.out.println("Send:" + message);
 			}
 

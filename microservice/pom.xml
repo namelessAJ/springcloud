@@ -21,6 +21,8 @@
         <module>jui-module</module>
         <module>seata-module</module>
     </modules>
+		<module>aqs-module</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

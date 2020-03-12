@@ -1,4 +1,4 @@
-package com.test.consummer;
+package com.test.simple.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -14,10 +14,10 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: Consummer4Direct1.java
+ * @Title: Consummer4Topic1.java
  * @date: 2018年12月19日 下午2:25:01
  */
-public class Consummer4Direct1 {
+public class Consummer4Topic1 {
 
 	public static void main(String[] args) {
 
@@ -27,14 +27,14 @@ public class Consummer4Direct1 {
 			factory.setHost("127.0.0.1");
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
-			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+			channel.exchangeDeclare(Constant.TOPIC_EXCHANGE, BuiltinExchangeType.TOPIC);
 
 			// 声明随机队列
 			String queue = channel.queueDeclare().getQueue();
 
-			String[] types = { "error", "info", "warning" };
+			String[] types = { "error.*", "*info", "error" };
 			for (String type : types) {
-				channel.queueBind(queue, Constant.EXCHANGE_NAME, type);
+				channel.queueBind(queue, Constant.TOPIC_EXCHANGE, type);
 			}
 
 			channel.basicQos(1);

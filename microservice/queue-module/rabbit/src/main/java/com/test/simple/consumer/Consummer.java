@@ -1,10 +1,9 @@
-package com.test.consummer;
+package com.test.simple.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
-import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -14,30 +13,24 @@ import com.rabbitmq.client.Envelope;
 import com.test.common.Constant;
 
 /**
- * @Title: Consummer4Direct2.java
- * @date: 2018年12月20日 下午2:25:01
+ * @Title: Consummer.java
+ * @date: 2018年12月18日 下午4:25:01
  */
-public class Consummer4Direct2 {
+public class Consummer {
 
 	public static void main(String[] args) {
 
 		try {
-
+			// 1.创建链接
 			ConnectionFactory factory = new ConnectionFactory();
 			factory.setHost("127.0.0.1");
 			Connection connection = factory.newConnection();
 			Channel channel = connection.createChannel();
-			channel.exchangeDeclare(Constant.EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
-			// 声明随机队列
-			String queue = channel.queueDeclare().getQueue();
+			// 2.声明队列
+			channel.queueDeclare(Constant.QUEUE_NAME, true, false, false, null);
 
-			String[] types = { "info"};
-			for (String type : types) {
-				channel.queueBind(queue, Constant.EXCHANGE_NAME, type);
-			}
-
-			// 生成消费者
+			// 3.生成消费者
 			Consumer consumer = new DefaultConsumer(channel) {
 				@Override
 				public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties,
@@ -45,12 +38,12 @@ public class Consummer4Direct2 {
 
 					// 获取消息内容然后处理
 					String msg = new String(body, "UTF-8");
-					System.out.println(" [x] Direct1==Received '" + envelope.getRoutingKey() + "':'" + msg + "'");
+					System.out.println("*********** MessageConsummer" + " get message :[" + msg + "]");
 				}
 			};
 
-			// 消费消息
-			channel.basicConsume(queue, true, consumer);
+			// 4.消费消息
+			channel.basicConsume(Constant.QUEUE_NAME, true, consumer);
 
 		} catch (IOException | TimeoutException e) {
 			e.printStackTrace();

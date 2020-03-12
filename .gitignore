@@ -92,3 +92,7 @@
 /microservice/queue-module/springboot-rabbit/target
 *.iml
 /microservice/config-module/config-client/*.iml
+/microservice/.idea
+*.iml
+/microservice/queue-module/rocket/target
+/microservice/queue-module/springboot-rabbit/target

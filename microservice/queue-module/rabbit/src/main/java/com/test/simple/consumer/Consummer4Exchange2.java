@@ -1,4 +1,4 @@
-package com.test.consummer;
+package com.test.simple.consumer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
