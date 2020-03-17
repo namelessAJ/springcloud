@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.concurrent.*;
 
 /**
- * @Title: Consummer.java
- * @date: 2018年12月18日 下午4:25:01
+ * @Title: Consummer4Multi
+ * @date: 2020年3月11日 下午4:25:01
  */
 public class Consummer4Multi {
 
