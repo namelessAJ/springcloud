@@ -18,6 +18,9 @@
 		<module>config-module</module>
 		<module>bus-module</module>
 		<module>sharding-module</module>
+        <module>jui-module</module>
+        <module>seata-module</module>
+    </modules>
 		<module>aqs-module</module>
 	</modules>
 
