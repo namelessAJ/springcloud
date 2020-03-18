@@ -35,9 +35,9 @@ public class ScoreReceiverConsumer {
     @RabbitListener(queues = QUEUE_NAME_TRANSACTION)
     public void orderReceiver(Message message, @Headers Map<String, Object> headers, Channel channel) {
         try {
-            log.info("score-message:{}", JSONObject.toJSONString(message));
+            log.info("message:{}", JSONObject.toJSONString(message));
             String msgBody = new String(message.getBody(), "UTF-8");
-            log.info("score-message body is :{}" + msgBody);
+            log.info("score-message body is:{}" + msgBody);
             //幂等处理
 //            if (true) {
 //                //丢弃消息
@@ -45,11 +45,10 @@ public class ScoreReceiverConsumer {
 //                channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
 //            }
             //处理积分逻辑，插入积分数据，成功则签收消息
-//            if (new Random().nextInt() % 2 == 0) {
                 //手动签收消息，通知MQ 删除此消息
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
                 log.info("scoreConsumer handler success.");
-//            }
+
         } catch (IOException e) {
             log.error("scoreConsumer handler Faild,{}", e.toString(), e);
         }

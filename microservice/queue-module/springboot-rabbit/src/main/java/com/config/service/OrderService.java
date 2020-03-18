@@ -1,6 +1,7 @@
 package com.config.service;
 
 import com.config.OrderMqConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessageProperties;
@@ -10,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Random;
 
 /**
  * @author aj
  */
 @Service
+@Slf4j
 public class OrderService implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnCallback {
 
     @Autowired
@@ -27,7 +30,11 @@ public class OrderService implements RabbitTemplate.ConfirmCallback, RabbitTempl
     }
 
     public void saveOrder() {
-        sendMsg();
+        if (new Random().nextInt() % 2 == 0) {
+            sendMsg();
+        } else {
+            log.error("下单失败，我不发啦!!");
+        }
     }
 
 
@@ -39,7 +46,7 @@ public class OrderService implements RabbitTemplate.ConfirmCallback, RabbitTempl
         CorrelationData correlationData = new CorrelationData("001");
         rabbitTemplate.convertAndSend(OrderMqConfig.EXCHANGE_NAME_TRANSACTION,
                 OrderMqConfig.ROUTE_NAME_TRANSACTION, message, correlationData);
-        System.out.println("Transactional Message success.");
+        log.info("Transactional Message success.");
 
 
     }
@@ -53,11 +60,11 @@ public class OrderService implements RabbitTemplate.ConfirmCallback, RabbitTempl
      */
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("我收到消息：" + correlationData);
+        log.info("我收到消息：" + correlationData);
         if (ack) {
-            System.out.println("success");
+            log.info("success");
         } else {
-            System.out.println("fail");
+            log.info("fail");
         }
     }
 
@@ -77,7 +84,7 @@ public class OrderService implements RabbitTemplate.ConfirmCallback, RabbitTempl
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Send message failed:" + replyCode + " " + replyText);
+        log.info("Send message failed:" + replyCode + " " + replyText);
         rabbitTemplate.send(message);
     }
 }
